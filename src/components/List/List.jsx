@@ -5,8 +5,24 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './styles.js';
 
 const List = ({ places, type, setType, rating, setRating, childClicked, isLoading }) => {
-  const [elRefs, setElRefs] = useState([]);
+  const [elRefs, setElRefs] = useState([]); ////
   const classes = useStyles();
+  const[type, setType]= useState('restaurants')
+  const[rating, setRating]= useState('')
+  const places = [
+    { name: 'Cool Place' },
+    { name: 'Cool Place' },
+    { name: 'Best Steak' },
+    { name: 'Cool Place' },
+    { name: 'Cool Place' },
+    { name: 'Best Steak' },
+    { name: 'Cool Place' },
+    { name: 'Cool Place' },
+    { name: 'Best Steak' },
+
+             
+  ];
+
 
   useEffect(() => {
     setElRefs((refs) => Array(places.length).fill().map((_, i) => refs[i] || createRef()));
@@ -14,7 +30,7 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">Food & Dining around you</Typography>
+      <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
       {isLoading ? (
         <div className={classes.loading}>
           <CircularProgress size="5rem" />
@@ -40,8 +56,8 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
           </FormControl>
           <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
-              <Grid ref={elRefs[i]} key={i} item xs={12}>
-                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
+              <Grid item key={i} xs={12}>
+                <PlaceDetails place={place} />
               </Grid>
             ))}
           </Grid>
