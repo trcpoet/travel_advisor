@@ -7,6 +7,9 @@ import Rating from '@mui/lab/Rating';
 import useStyles from './styles.js';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
+  retuurn (
+    <h1>{place.name}</h1>
+  )
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const classes = useStyles();
 
