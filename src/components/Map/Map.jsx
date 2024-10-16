@@ -2,21 +2,26 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@mui/icons-material';
 import LocationOnOutlinedIcon from '@mui/icons/LocationOnOutlined';
-import Rating from '@mui/lab/Rating';
+import Rating from '@mui/lab';
 
 import mapStyles from '../../mapStyles';
-import useStyles from './styles.js';
+import useStyles from './styles';
 
-const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
-  const matches = useMediaQuery('(min-width:600px)');
+const Map = () => {
+  // ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => 
+
+  // const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
+  const isMobile = useMediaQuery('(min-width:600px)');
+
+  const coordinates = {lat:0.0, lng: 0.0};
 
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyBDSR5oeBPf1KvcwimOeS9l0SYSj81JMeo' }}
-        defaultCenter={coords}
-        center={coords}
+        bootstrapURLKeys={{ key: 'AIzaSyDasS_cQfSdodeMCxTto1aXUIYI7M_XuD0' }}
+        defaultCenter={coordinates}
+        center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
